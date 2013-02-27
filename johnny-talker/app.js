@@ -42,7 +42,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('huevapiChannel', function (data) {
   	socket.emit('newsChannel', { parte1: 'legen...wait for it!...' });
     setTimeout(function(){
-    	socket.emit('news', { parte2: 'dary!' });
+    	socket.emit('newsChannel', { parte2: 'dary!' });
     }, 2000);
     console.log(data);
   });
