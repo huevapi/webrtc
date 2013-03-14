@@ -39,11 +39,26 @@ server.listen(app.get('port'), function(){
 
 io.sockets.on('connection', function (socket) {
 
-  socket.on('huevapiChannel', function (data) {
-  	socket.emit('newsChannel', { parte1: 'legen...wait for it!...' });
-    setTimeout(function(){
-    	socket.emit('newsChannel', { parte2: 'dary!' });
-    }, 2000);
-    console.log(data);
-  });
+	socket.on('sdpChannel',function(_data){
+		var data = JSON.parse(_data);
+
+		io.sockets.clients().forEach(function (sockete) {
+			if (sockete != socket)
+			{
+				sockete.emit('sdpChannel', _data);
+			}
+		});
+	});
+
+
+	socket.on('iceChannel',function(_data){
+		var data = JSON.parse(_data);
+
+		io.sockets.clients().forEach(function (sockete) {
+			if (sockete != socket)
+			{
+				sockete.emit('iceChannel', _data);
+			}
+		});
+	});
 });
