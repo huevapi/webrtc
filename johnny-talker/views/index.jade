@@ -1,6 +1,9 @@
 extends layout
 
 block content
+  p This demo (only for Chrome) helps in learning the steps of a RTCPeerConnection establishment.
+  p Open up another tab or browser and start messing with the buttons until you get it right :)
+  p
   button#call(onClick="getLocalStream(true)") getLocalStream
   button#call(onClick="createRTCPeerConnection()") createRTCPeerConnection
   button#call(onClick="createOffer()") createOffer
